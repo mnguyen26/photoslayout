@@ -1,0 +1,23 @@
+.scroll-container {
+    overflow: auto;
+    max-height: 90vh; 
+  }
+  
+  
+  .scroll-container::-webkit-scrollbar {
+    width: 8px; 
+  }
+  
+  .scroll-container::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    border-radius: 10px;
+  }
+  
+  .scroll-container::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 10px;
+  }
+  
+  .scroll-container::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
