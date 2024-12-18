@@ -5,15 +5,14 @@
   "homepage": "https://mnguyen26.github.io/photoslayout",
   "dependencies": {
     "cra-template-typescript": "1.2.0",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
-    "react-fade-in": "^2.0.1",
-    "react-images": "^1.2.0-beta.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-intersection-observer": "^8.34.0",
     "react-modal": "^3.16.1",
-    "react-photo-gallery": "^8.0.0",
+    "react-photo-album": "^3.0.2",
     "react-scripts": "5.0.1",
-    "web-vitals": "^4.2.4"
+    "web-vitals": "^4.2.4",
+    "yet-another-react-lightbox": "^3.21.7"
   },
   "scripts": {
     "start": "react-scripts start",

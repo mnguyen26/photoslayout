@@ -1,40 +1,49 @@
-import React, { useState, useCallback } from 'react';
-import Gallery from "react-photo-gallery";
-import Carousel, { Modal, ModalGateway } from "react-images";
+import React, { useState } from "react";
 
-import './photos.css';
+import { RowsPhotoAlbum } from "react-photo-album";
 
-import images from './output.json';
+import Lightbox from "yet-another-react-lightbox";
+import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
+import Slideshow from "yet-another-react-lightbox/plugins/slideshow";
+import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import "yet-another-react-lightbox/plugins/thumbnails.css";
+
+import "react-photo-album/rows.css";
+import "yet-another-react-lightbox/styles.css";
+
+import photos from "./output.json";
 
 const Photos = () => {
-    const [currentImage, setCurrentImage] = useState<number>(0);
-    const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [currentPhoto, setCurrentPhoto] = useState<number>(-1);
+  const [lightboxOpen, setLightboxOpen] = useState<boolean>(false);
 
-    const handleImageClick = (index: number) => {
-        setCurrentImage(index);
-        setModalOpen(true);
-    };
+  const handleImageClick = (index: number) => {
+    setCurrentPhoto(index);
+    setLightboxOpen(true);
+  }
 
-    const closeModal = () => {
-        setCurrentImage(0);
-        setModalOpen(false);
-    }
+  const handleCloseLightbox = () => {
+    setCurrentPhoto(-1);
+    setLightboxOpen(false);
+  }
 
-    return (
-        <div className="scroll-container">
-          <Gallery photos={images} onClick={(event, { photo, index }) => handleImageClick(index)} />
-          <ModalGateway>
-            {modalOpen ? (
-              <Modal onClose={closeModal}>
-                <Carousel
-                  currentIndex={currentImage}
-                  views={images}
-                />
-              </Modal>
-            ) : null}
-          </ModalGateway>
-        </div>
-    )
-};
+  return (
+    <>
+    <RowsPhotoAlbum 
+      photos={photos} 
+      onClick={({ index }) => handleImageClick(index)} 
+    />
+
+    <Lightbox
+      slides={photos}
+      open={lightboxOpen}
+      index={currentPhoto}
+      close={handleCloseLightbox}
+      plugins={[Fullscreen, Slideshow, Thumbnails, Zoom]}
+    />
+    </>
+  )
+}
 
 export default Photos
