@@ -9,6 +9,7 @@ import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 
+import './photos.css';
 import "react-photo-album/rows.css";
 import "yet-another-react-lightbox/styles.css";
 
@@ -29,20 +30,20 @@ const Photos = () => {
   }
 
   return (
-    <>
-    <RowsPhotoAlbum 
-      photos={photos} 
-      onClick={({ index }) => handleImageClick(index)} 
-    />
+    <div className="scroll-container">
+      <RowsPhotoAlbum 
+        photos={photos} 
+        onClick={({ index }) => handleImageClick(index)} 
+      />
 
-    <Lightbox
-      slides={photos}
-      open={lightboxOpen}
-      index={currentPhoto}
-      close={handleCloseLightbox}
-      plugins={[Fullscreen, Slideshow, Thumbnails, Zoom]}
-    />
-    </>
+      <Lightbox
+        slides={photos}
+        open={lightboxOpen}
+        index={currentPhoto}
+        close={handleCloseLightbox}
+        plugins={[Fullscreen, Slideshow, Thumbnails, Zoom]}
+      />
+    </div>
   )
 }
 
